@@ -25,7 +25,7 @@
     </queries>
 
     <application
-        android:label="GroFresh Delivery Man"
+        android:label="JewelOfAsia Delivery"
         android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"

@@ -1,4 +1,4 @@
-package com.sixamtech.grofresh_delivery
+package com.jewelofasia.delivery
 
 import io.flutter.embedding.android.FlutterActivity
 

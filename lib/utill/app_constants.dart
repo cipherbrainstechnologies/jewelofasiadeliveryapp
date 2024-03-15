@@ -2,7 +2,7 @@ import 'package:grocery_delivery_boy/features/language/domain/models/language_mo
 import 'package:grocery_delivery_boy/utill/images.dart';
 
 class AppConstants {
-  static const String appName = 'GroFresh Delivery Man';
+  static const String appName = 'JEWELOFASIA DELIVERY';
   static const double appVersion = 7.3;
   static const String fontFamily = 'Rubik';
   static const String baseUrl = 'YOUR_BASE_URL_HERE';
