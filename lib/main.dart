@@ -38,12 +38,7 @@ Future<void> main() async {
   if(Platform.isIOS) {
     await Firebase.initializeApp();
   }else {
-    await Firebase.initializeApp(options: const FirebaseOptions(
-      apiKey: 'AIzaSyDTFm7oPur3xhZbVmCkgFkGFcR-44h6Gyo', //current_key
-      appId: '1:250728969979:android:1dea8003236ec9b275a25e', // mobilesdk_app_id
-      messagingSenderId: '250728969979', // project_number
-      projectId: 'grofresh-3986f', // project_id
-    ));
+    await Firebase.initializeApp();
 
   }
 
@@ -101,16 +96,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: AppConstants.appName,
       debugShowCheckedModeBanner: false,
-      theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
-      locale: Provider.of<LocalizationProvider>(context).locale,
+      //theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
       navigatorKey: navigatorKey,
-      localizationsDelegates: const [
-        AppLocalization.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: locals,
       home: const SplashScreen(),
       builder: (context, widget)=> MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)),
