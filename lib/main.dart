@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -29,16 +28,19 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterL
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 AndroidNotificationChannel? channel;
 
-
-
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
 
-  if(Platform.isIOS) {
+  if(!kIsWeb) {
     await Firebase.initializeApp();
   }else {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(options: const FirebaseOptions(
+      apiKey: 'AIzaSyDTFm7oPur3xhZbVmCkgFkGFcR-44h6Gyo', //current_key
+      appId: '1:575307389937:android:a98f42746bc7891cc68250', // mobilesdk_app_id
+      messagingSenderId: '575307389937', // project_number
+      projectId: 'jewelofasia-1d8c1', // project_id
+    ));
 
   }
 
@@ -65,6 +67,8 @@ Future<void> main() async {
     );
   }
   await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
+  flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()!.requestNotificationsPermission();
   FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
 
   runApp(MultiProvider(
@@ -96,8 +100,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: AppConstants.appName,
       debugShowCheckedModeBanner: false,
-      //theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
+      theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
+      locale: Provider.of<LocalizationProvider>(context).locale,
       navigatorKey: navigatorKey,
+      localizationsDelegates: const [
+        AppLocalization.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: locals,
       home: const SplashScreen(),
       builder: (context, widget)=> MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)),

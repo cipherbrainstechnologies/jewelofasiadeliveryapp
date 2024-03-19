@@ -83,7 +83,7 @@ class OrderDetailsModel {
         _variation!.add(Variation.fromJson(v));
       });
     }
-    _discountOnProduct = json['discount_on_product'].toDouble();
+    _discountOnProduct = json['discount_on_product'] ?? 0.0;
     _discountType = json['discount_type'];
     _quantity = json['quantity'];
     _taxAmount = json['tax_amount'].toDouble();

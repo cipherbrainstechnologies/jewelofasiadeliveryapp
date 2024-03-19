@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 class NotificationHelper {
 
   static Future<void> initialize(FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var androidInitialize = const AndroidInitializationSettings('notification_icon');
+    var androidInitialize = const AndroidInitializationSettings('mipmap/notification_icon');
     var iOSInitialize = const DarwinInitializationSettings();
     var initializationsSettings = InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
     flutterLocalNotificationsPlugin.initialize(initializationsSettings,
