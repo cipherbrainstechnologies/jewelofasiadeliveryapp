@@ -5,7 +5,7 @@ class AppConstants {
   static const String appName = 'JEWELOFASIA DELIVERY';
   static const double appVersion = 7.3;
   static const String fontFamily = 'Rubik';
-  static const String baseUrl = 'https://phplaravel-941212-4363533.cloudwaysapps.com';
+  static const String baseUrl = 'https://admin.jewelsofasia.app';
   static const String profileUri = '/api/v1/delivery-man/profile?token=';
   static const String configUri = '/api/v1/config';
   static const String loginUri = '/api/v1/auth/delivery-man/login';
